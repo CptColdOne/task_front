@@ -3,11 +3,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const miniCss = require('mini-css-extract-plugin')
 
 module.exports = {
-    mode: "production",
+    mode: "development",
     entry: "./src/index.ts",
     output: {
         filename: "./bundle.js",
         path: path.resolve(__dirname, 'dist'),
+    },
+    
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'public'),
+        },
+        open: true,
+        compress: true,
+        port: 9000,
     },
 
     plugins: [
